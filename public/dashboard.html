@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dark Squad Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ===== Dashboard Style ===== */
+    body {
+      background: radial-gradient(circle at center, #001a00 0%, #000 70%);
+      color: #00ff80;
+      font-family: 'Courier New', Courier, monospace;
+      overflow-x: hidden;
+    }
+
+    .dashboard-container {
+      text-align: center;
+      margin-top: 60px;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .dashboard-title {
+      font-size: 2.8em;
+      text-shadow: 0 0 15px #00ff80, 0 0 40px #00ffaa;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+    }
+
+    .dashboard-sub {
+      font-size: 1.2em;
+      color: #66ff99;
+      margin-bottom: 50px;
+      text-shadow: 0 0 10px #00ffaa;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      padding: 0 40px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .card {
+      background: rgba(0, 20, 0, 0.8);
+      border: 1px solid #00ff66;
+      border-radius: 15px;
+      padding: 25px;
+      box-shadow: 0 0 20px #00ffaa33;
+      transition: all 0.3s ease-in-out;
+      cursor: pointer;
+      backdrop-filter: blur(2px);
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 30px #00ffaa;
+    }
+
+    .card h2 {
+      font-size: 1.5em;
+      color: #00ff99;
+      margin-bottom: 10px;
+      text-shadow: 0 0 10px #00ffaa;
+    }
+
+    .card p {
+      font-size: 0.95em;
+      color: #ccffdd;
+    }
+
+    .logout-btn {
+      margin-top: 50px;
+      padding: 12px 30px;
+      font-size: 1em;
+      color: #000;
+      background: #00ff6a;
+      border: 2px solid #00ffaa;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 0 20px #00ffaa;
+      transition: all 0.3s;
+    }
+
+    .logout-btn:hover {
+      background: #000;
+      color: #00ff80;
+      box-shadow: 0 0 40px #00ffaa;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="grid-bg"></div>
+  <div id="energy-bg"></div>
+  <div id="scan-overlay"></div>
+
+  <div class="dashboard-container">
+    <h1 class="dashboard-title">⚡ Dark Squad Command Center ⚡</h1>
+    <p class="dashboard-sub">Welcome, <span id="userEmail">Loading...</span></p>
+
+    <div class="card-grid">
+      <div class="card">
+        <h2>🛰 Mission Logs</h2>
+        <p>Access past and ongoing operations.</p>
+      </div>
+
+      <div class="card">
+        <h2>🔐 Security Vault</h2>
+        <p>Manage secure credentials and access permissions.</p>
+      </div>
+
+      <div class="card">
+        <h2>📊 Intelligence Reports</h2>
+        <p>Analyze gathered data and generate summaries.</p>
+      </div>
+
+      <div class="card">
+        <h2>⚙️ System Settings</h2>
+        <p>Configure system preferences and access levels.</p>
+      </div>
+    </div>
+
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </div>
+
+  <script>
+    // Simulate showing user email after login
+    const userEmail = localStorage.getItem("userEmail") || "Agent@dark-squad.net";
+    document.getElementById("userEmail").textContent = userEmail;
+
+    function logout() {
+      localStorage.removeItem("userEmail");
+      window.location = "index.html";
+    }
+  </script>
+</body>
+</html>
